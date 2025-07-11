@@ -1,10 +1,9 @@
 export {LocationFetcher}
 
 async function LocationFetcher(location) {
-    const Details = fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=`,{
+    const WeatherDetailsJSON = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=FN5JYKF3GDMMFET2J2CG6W7WE`,{
         mode: 'cors'
     });
-    console.log(Details)
+    const WeatherDetails = WeatherDetailsJSON.json(); 
+    console.log(WeatherDetails)
 }
-
-LocationFetcher

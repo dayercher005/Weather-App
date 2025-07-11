@@ -1,8 +1,9 @@
 :root{
-    
+    --defaultFont: Roboto;
 }
 
 *{
+    font-family: Roboto;
     background-image: url("../images/backgroundImage.jpg");
     background-color: hsl(0, 0%, 0%);
     background-repeat: no-repeat;
