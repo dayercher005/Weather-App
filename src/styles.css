@@ -3,15 +3,44 @@
 :root{
     --defaultFont: Roboto;
     --greenColor: hsl(126, 88%, 61%);
+    --buttonColor: hsl(37, 91%, 56%);
+    --buttonHoverColor: hsl(37, 91%, 46%);
 }
 
 *{
     font-family: Roboto;
-    background-image: url("../images/backgroundImage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+body{
+    background-image: url("../images/backgroundImage.jpg");
+}
+
+/* CSS Styling Code for Site Header */
+
+div#HeaderParagraph{
+    display: flex;
+    justify-content: center;
+}
+
+button#LocationChanger{
+    background-color: var(--buttonColor);
+    color: hsl(100, 100%, 100%);
+    height: 60px;
+    width: 200px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 15px;
+}
+
+button#LocationChanger:hover{
+    background-color: var(--buttonHoverColor);
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 50px  var(--buttonColor);
+    transition: 0.3s transform;
+}
 
 /* CSS Styling Code for Modal */
 
