@@ -1,5 +1,10 @@
+export {LocationFetcher}
+
 async function LocationFetcher(location) {
-    fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=`,{
+    const Details = fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=`,{
         mode: 'cors'
     });
+    console.log(Details)
 }
+
+LocationFetcher
