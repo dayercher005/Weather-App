@@ -1,6 +1,6 @@
 import "./styles.css";
-import {LocationFetcher} from "./API.js"
+import {WeatherDetailsFetcher} from "./API.js"
 import {WeatherAppEventListeners} from "./UI.js"
 
 WeatherAppEventListeners();
-LocationFetcher("Singapore");
+WeatherDetailsFetcher("Singapore");

@@ -1,6 +1,6 @@
-export {LocationFetcher}
+export {WeatherDetailsFetcher}
 
-async function LocationFetcher(location) {
+async function WeatherDetailsFetcher(location) {
     const WeatherDetailsJSON = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=FN5JYKF3GDMMFET2J2CG6W7WE`,{
         mode: 'cors'
     });

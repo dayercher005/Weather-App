@@ -56,6 +56,7 @@ input#LocationInput{
     border-radius: 10px;
     padding: 5px;
     height: 20px;
+    
 }
 
 div.submitContainer{
@@ -67,7 +68,7 @@ input#submitModal{
     background-color: var(--submitColor);
     margin: 15px;
     width: 200px;
-    height: 30px;
+    height: 40px;
     border: none;
     border-radius: 10px;
 }
