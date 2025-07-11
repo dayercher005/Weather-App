@@ -1,11 +1,20 @@
+/* Global CSS Styling Code */
+
 :root{
     --defaultFont: Roboto;
+    --greenColor: hsl(126, 88%, 61%);
 }
 
 *{
     font-family: Roboto;
     background-image: url("../images/backgroundImage.jpg");
-    background-color: hsl(0, 0%, 0%);
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+/* CSS Styling Code for Modal */
+
+dialog{
+    position: absolute;
 }

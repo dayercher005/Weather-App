@@ -9,10 +9,20 @@
     <title>Weather Application</title>
 </head>
 <body>
+    <div id="HeaderParagraph">
+        <p>Location:</p>
+        <button id="LocationChanger">Change Location</button>
+    </div>
+
     <dialog id="LocationDialog">
         <form id="LocationForm">
-            <label id="LocationLabel">Location: </label>
-            <input id="LocationInput">
+            <div class="userInputContainer">
+                <label id="LocationLabel">Location: </label>
+                <input id="LocationInput" type="text">
+            </div>
+            <div class="submitContainer">
+                <input id="submitModal" type="submit">
+            </div>
         </form>
     </dialog>
 </body>
