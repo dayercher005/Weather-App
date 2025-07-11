@@ -5,10 +5,10 @@ async function LocationFetcher(location) {
         mode: 'cors'
     });
     const WeatherDetails = await WeatherDetailsJSON.json(); 
-    const weatherConditions = await WeatherDetails.currentConditions.conditions;
-    const temperature = WeatherDetails.currentConditions.temp;
-    const weatherDescription = WeatherDetails.currentConditions.description;
-    console.log(WeatherDetails);
+    const weatherConditions =  WeatherDetails.currentConditions.conditions;
+    const temperature =  WeatherDetails.currentConditions.temp;
+    const weatherDescription = WeatherDetails.description;
+    console.log(weatherDescription);
     return {weatherConditions, temperature, weatherDescription}
 }
 
