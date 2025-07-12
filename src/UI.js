@@ -27,15 +27,22 @@ function ModalEventListeners() {
     return {OpenModal, CloseModal}
 }
 
-function RenderDisplay() {
+async function RenderDisplay() {
 
     const currentLocation = document.querySelector("#currentLocation");
     const LocationInput = document.querySelector("#LocationInput");
-    const currentWeatherDetails = WeatherLocationFetcher(LocationInput.value);
+
+    const currentWeatherDetails = await WeatherLocationFetcher(LocationInput.value);
     currentLocation.textContent = `Current Location: ${LocationInput.value}`;
 
     const locationTemperature = document.querySelector("#locationTemperature");
+    locationTemperature.textContent = currentWeatherDetails.temperature;
     
+    const locationDescription = document.querySelector("#locationDescription");
+    locationDescription.textContent = currentWeatherDetails.description;
+
+    const locationConditions = document.querySelector("#locationConditions");
+    locationConditions.textContent = currentWeatherDetails.conditions;
 }
 
 
