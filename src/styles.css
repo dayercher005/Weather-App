@@ -9,13 +9,14 @@
 }
 
 *{
-    font-family: Roboto;
-    background-repeat: no-repeat;
-    background-size: cover;
+    font-family: Roboto; 
 }
 
 body{
     margin: 0;
+    background: linear-gradient(45deg, rgb(223, 187, 187), #ffa4e2, #eaff9e);
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 /* CSS Styling Code for Site Header */
@@ -23,7 +24,14 @@ body{
 div#HeaderParagraph{
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 1.5%;
+    align-items: center;
+    gap: 3%;
+}
+
+div#currentLocation{
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 button#LocationChanger{
@@ -52,11 +60,15 @@ dialog{
     
 }
 
+label#LocationLabel{
+    font-size: 1.3rem;
+}
+
 input#LocationInput{
     border-radius: 10px;
-    padding: 5px;
+    padding: 8px;
     height: 20px;
-    
+    font-size: 1.2rem;
 }
 
 div.submitContainer{
@@ -71,6 +83,7 @@ input#submitModal{
     height: 40px;
     border: none;
     border-radius: 10px;
+    font-size: 1.3rem;
 }
 
 input#submitModal:hover{
