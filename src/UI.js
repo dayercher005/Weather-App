@@ -36,7 +36,7 @@ async function RenderDisplay() {
     currentLocation.textContent = `Current Location: ${LocationInput.value}`;
 
     const locationTemperature = document.querySelector("#locationTemperature");
-    locationTemperature.textContent = currentWeatherDetails.temperature;
+    locationTemperature.textContent = `${currentWeatherDetails.temperature}ºF`;
     
     const locationDescription = document.querySelector("#locationDescription");
     locationDescription.textContent = currentWeatherDetails.description;
