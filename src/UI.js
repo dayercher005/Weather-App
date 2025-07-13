@@ -33,7 +33,8 @@ async function RenderDisplay() {
     const LocationInput = document.querySelector("#LocationInput");
 
     const currentWeatherDetails = await WeatherLocationFetcher(LocationInput.value);
-    currentLocation.textContent = `Current Location: ${LocationInput.value}`;
+
+    currentLocation.textContent = `Current Location: ${currentWeatherDetails.address}`;
 
     const locationTemperature = document.querySelector("#locationTemperature");
     locationTemperature.textContent = `${currentWeatherDetails.temperature}ºF`;
@@ -43,6 +44,9 @@ async function RenderDisplay() {
 
     const locationConditions = document.querySelector("#locationConditions");
     locationConditions.textContent = currentWeatherDetails.conditions;
+
+    const locationIcon = document.querySelector("#locationIcon");
+    locationIcon.src = currentWeatherDetails.icon;
 }
 
 
