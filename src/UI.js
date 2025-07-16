@@ -46,7 +46,8 @@ async function RenderDisplay() {
     locationConditions.textContent = currentWeatherDetails.conditions;
 
     const locationIcon = document.querySelector("#locationIcon");
-    locationIcon.src = currentWeatherDetails.icon;
+    locationIcon.src = `../images/${await currentWeatherDetails.icon}.png`;
+    console.log(currentWeatherDetails.icon);
 }
 
 
