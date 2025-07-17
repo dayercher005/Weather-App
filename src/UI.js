@@ -37,17 +37,18 @@ async function RenderDisplay() {
     currentLocation.textContent = `Current Location: ${currentWeatherDetails.address}`;
 
     const locationTemperature = document.querySelector("#locationTemperature");
-    locationTemperature.textContent = `${currentWeatherDetails.temperature}ºF`;
+    locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
     
     const locationDescription = document.querySelector("#locationDescription");
-    locationDescription.textContent = currentWeatherDetails.description;
+    locationDescription.textContent = `Weather Description: ${currentWeatherDetails.description}`;
 
     const locationConditions = document.querySelector("#locationConditions");
-    locationConditions.textContent = currentWeatherDetails.conditions;
+    locationConditions.textContent = `Weather Conditions: ${currentWeatherDetails.conditions}`;
 
     const locationIcon = document.querySelector("#locationIcon");
-    locationIcon.src = `../images/${await currentWeatherDetails.icon}.png`;
-    console.log(currentWeatherDetails.icon);
+    import(`../images/${currentWeatherDetails.icon}.png`).then(({default: Icon}) => {
+        locationIcon.src = Icon;
+    })
 }
 
 
