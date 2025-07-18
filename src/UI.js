@@ -20,7 +20,8 @@ function ModalEventListeners() {
         submitButton.addEventListener("click", (e) => {
             e.preventDefault();
             LocationModal.close();
-            RenderDisplay();
+            const WeatherAppDisplay = RenderDisplay()
+            WeatherAppDisplay
         })
     }
 
@@ -31,24 +32,42 @@ async function RenderDisplay() {
 
     const currentLocation = document.querySelector("#currentLocation");
     const LocationInput = document.querySelector("#LocationInput");
-
     const currentWeatherDetails = await WeatherLocationFetcher(LocationInput.value);
 
-    currentLocation.textContent = `Current Location: ${currentWeatherDetails.address}`;
+    const LocationChanger = () => {
+        currentLocation.textContent = `Current Location: ${currentWeatherDetails.address}`;
+    }
 
-    const locationTemperature = document.querySelector("#locationTemperature");
-    locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
+    const TemperatureChanger = () => {
+        const locationTemperature = document.querySelector("#locationTemperature");
+        const FahrenheitTemp = document.querySelector("#Fahrenheit");
+        const CelsiusTemp = document.querySelector("#Celsius");
+
+        if(FahrenheitTemp.checked == true){
+            locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
+        } else if (CelsiusTemp.checked == true){
+            locationTemperature.textContent = `Temperature: ${(currentWeatherDetails.temperature - 32) * 5/9}ºC`;
+        }
+    }
     
-    const locationDescription = document.querySelector("#locationDescription");
-    locationDescription.textContent = `Weather Description: ${currentWeatherDetails.description}`;
+    const DescriptionChanger = () => {
+        const locationDescription = document.querySelector("#locationDescription");
+        locationDescription.textContent = `Weather Description: ${currentWeatherDetails.description}`;
+    }
 
-    const locationConditions = document.querySelector("#locationConditions");
-    locationConditions.textContent = `Weather Conditions: ${currentWeatherDetails.conditions}`;
+    const ConditionChanger = () => {
+        const locationConditions = document.querySelector("#locationConditions");
+        locationConditions.textContent = `Weather Conditions: ${currentWeatherDetails.conditions}`;
+    }
 
-    const locationIcon = document.querySelector("#locationIcon");
-    import(`../images/${currentWeatherDetails.icon}.png`).then(({default: Icon}) => {
-        locationIcon.src = Icon;
-    })
+    const IconChanger = () => {
+        const locationIcon = document.querySelector("#locationIcon");
+        import(`../images/${currentWeatherDetails.icon}.png`).then(({default: Icon}) => {
+            locationIcon.src = Icon;
+        })
+    }
+
+    return {LocationChanger, TemperatureChanger, DescriptionChanger, ConditionChanger, IconChanger}
 }
 
 
