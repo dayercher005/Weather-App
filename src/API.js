@@ -1,3 +1,5 @@
+import {ErrorFunction} from "./UI.js";
+
 export {WeatherLocationFetcher}
 
 async function WeatherLocationFetcher(location) {
@@ -29,7 +31,7 @@ async function WeatherLocationFetcher(location) {
 
         return WeatherObject
     } catch (error) {
-
+        ErrorFunction();
     }
     
 }

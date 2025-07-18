@@ -1,5 +1,5 @@
 import {WeatherLocationFetcher} from "./API.js"
-export {WeatherAppEventListeners}
+export {WeatherAppEventListeners, ErrorFunction}
 
 function ModalEventListeners() {
 
@@ -39,7 +39,11 @@ async function RenderDisplay() {
     const FahrenheitTemp = document.querySelector("#Fahrenheit");
     const CelsiusTemp = document.querySelector("#Celsius");
 
-    locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
+    if(FahrenheitTemp.checked){
+        locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
+    } else if (CelsiusTemp.checked) {
+        locationTemperature.textContent = `Temperature: ${((currentWeatherDetails.temperature - 32) * 5/9).toFixed(1)}ºC`;
+    }
 
     FahrenheitTemp.addEventListener("click", () => {
         locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
@@ -62,6 +66,24 @@ async function RenderDisplay() {
         locationIcon.src = Icon;
     })
     
+}
+
+function ErrorFunction() {
+    const currentLocation = document.querySelector("#currentLocation");
+    currentLocation.textContent = "Location Not Found !";
+
+    const locationTemperature = document.querySelector("#locationTemperature");
+    locationTemperature.textContent = "";
+
+    const locationDescription = document.querySelector("#locationDescription");
+    locationDescription.textContent = "";
+    
+    const locationConditions = document.querySelector("#locationConditions");
+    locationConditions.textContent = "";
+    
+    
+    const locationIcon = document.querySelector("#locationIcon");
+    locationIcon.src = ""
 }
 
 
