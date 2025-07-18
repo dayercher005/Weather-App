@@ -20,8 +20,7 @@ function ModalEventListeners() {
         submitButton.addEventListener("click", (e) => {
             e.preventDefault();
             LocationModal.close();
-            const WeatherAppDisplay = RenderDisplay()
-            WeatherAppDisplay
+            RenderDisplay();  
         })
     }
 
@@ -33,46 +32,43 @@ async function RenderDisplay() {
     const currentLocation = document.querySelector("#currentLocation");
     const LocationInput = document.querySelector("#LocationInput");
     const currentWeatherDetails = await WeatherLocationFetcher(LocationInput.value);
-
-    const LocationChanger = () => {
-        currentLocation.textContent = `Current Location: ${currentWeatherDetails.address}`;
-    }
-
-    const TemperatureChanger = () => {
-        const locationTemperature = document.querySelector("#locationTemperature");
-        const FahrenheitTemp = document.querySelector("#Fahrenheit");
-        const CelsiusTemp = document.querySelector("#Celsius");
-
-        if(FahrenheitTemp.checked == true){
-            locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
-        } else if (CelsiusTemp.checked == true){
-            locationTemperature.textContent = `Temperature: ${(currentWeatherDetails.temperature - 32) * 5/9}ºC`;
-        }
-    }
+ 
+    currentLocation.textContent = `Current Location: ${currentWeatherDetails.address}`;
     
-    const DescriptionChanger = () => {
-        const locationDescription = document.querySelector("#locationDescription");
-        locationDescription.textContent = `Weather Description: ${currentWeatherDetails.description}`;
-    }
+    const locationTemperature = document.querySelector("#locationTemperature");
+    const FahrenheitTemp = document.querySelector("#Fahrenheit");
+    const CelsiusTemp = document.querySelector("#Celsius");
 
-    const ConditionChanger = () => {
-        const locationConditions = document.querySelector("#locationConditions");
-        locationConditions.textContent = `Weather Conditions: ${currentWeatherDetails.conditions}`;
-    }
+    locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
 
-    const IconChanger = () => {
-        const locationIcon = document.querySelector("#locationIcon");
-        import(`../images/${currentWeatherDetails.icon}.png`).then(({default: Icon}) => {
-            locationIcon.src = Icon;
-        })
-    }
+    FahrenheitTemp.addEventListener("click", () => {
+        locationTemperature.textContent = `Temperature: ${currentWeatherDetails.temperature}ºF`;
+    })
 
-    return {LocationChanger, TemperatureChanger, DescriptionChanger, ConditionChanger, IconChanger}
+    CelsiusTemp.addEventListener("click", () => {
+        locationTemperature.textContent = `Temperature: ${((currentWeatherDetails.temperature - 32) * 5/9).toFixed(1)}ºC`;
+    })
+
+    
+    const locationDescription = document.querySelector("#locationDescription");
+    locationDescription.textContent = `Weather Description: ${currentWeatherDetails.description}`;
+    
+    const locationConditions = document.querySelector("#locationConditions");
+    locationConditions.textContent = `Weather Conditions: ${currentWeatherDetails.conditions}`;
+    
+    
+    const locationIcon = document.querySelector("#locationIcon");
+    import(`../images/${currentWeatherDetails.icon}.png`).then(({default: Icon}) => {
+        locationIcon.src = Icon;
+    })
+    
 }
+
 
 
 function WeatherAppEventListeners() {
     const LocationModal = ModalEventListeners();
     LocationModal.OpenModal();
     LocationModal.CloseModal();
+    RenderTemperatureDisplay();
 }
